@@ -8,7 +8,7 @@ function volume_sphere(event) {
     const result = (4 / 3) * Math.PI * Math.pow(radius, 3);
     volume.value = result.toFixed(4); // 523.5988 for 5
   } else {
-    volume.value = "";
+    volume.value = "NAN";
   }
 }
 
