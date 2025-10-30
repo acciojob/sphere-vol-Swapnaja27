@@ -1,20 +1,17 @@
-function volume_sphere(radius) {
-    //Write your code here
-    let result=(4/3)*Math.PI*radius*radius*radius;
-	return result;
-} 
+function volume_sphere(event) {
+  event.preventDefault(); // prevent form reload
 
-let radius=document.getElementById("radius");
-let volume=document.getElementById("volume");
-let btn=document.getElementById("submit");
+  const radius = document.getElementById("radius").value;
+  const volume = document.getElementById("volume");
 
-btn.addEventListener("click",()=>
-	{
-		if(radius<0){
-			volume.textContent="NAN";
-		}else{
-			volume_sphere(radius);
-		}
-	})
+  if (radius && radius > 0) {
+    const result = (4 / 3) * Math.PI * Math.pow(radius, 3);
+    volume.value = result.toFixed(4); // 523.5988 for 5
+  } else {
+    volume.value = "";
+  }
+}
 
-window.onload = document.getElementById('MyForm').onsubmit = volume_sphere;
+window.onload = function() {
+  document.getElementById("MyForm").addEventListener("submit", volume_sphere);
+};
